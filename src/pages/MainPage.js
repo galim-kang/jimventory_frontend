@@ -5,8 +5,8 @@ import { styled } from "styled-components";
 import Jimventory from "../components/Jimventory";
 
 import SearchBar from "../components/SearchBar";
-import MyLocationIcon from "../image/MyLocation.png";
-import MarkerIcon from "../image/MarkerIcon.png";
+import MyLocationIcon from "../image/MyLocation .png";
+import MarkerIcon from "../image/MarkerIcon .png";
 import UserIcon from "../image/UserIcon.png";
 import axios from "axios";
 
@@ -75,7 +75,7 @@ function Main() {
       console.log(response);
       const { mapx, mapy } = response.data.items[0];
       const location = { lat: mapy * 0.0000001, lng: mapx * 0.0000001 };
-      console.log(location, "dd");
+      // console.log(location, "dd");
       setCurrentLocation(location);
       // cache[searchValue] = result;
     } catch (error) {
@@ -91,7 +91,12 @@ function Main() {
       console.log(storages, "dd");
     };
     fetchStorages();
-  }, []);
+  }, []); // storage가 현재는 몇 개 없지만, 많아질 경우 한번에 불러오는 것은 무리일 듯. 
+  // currentLocation 중심으로 범위 지정해서 몇개씩 받아오도록 추후에 수정해야함.
+  // 1. 그러면 처음에는 초기 설정된 위치 범위로
+  // 2. 사용자 위치 지정하면 그 위치 범위로
+  // 3. 주소 검색하면 그 위치 범위로
+  // useEffect로 데이터 불러올 시에 의존성 배열에 currentLocation 혹은 현재 위치 값이 담겨야 함. 
 
   return (
     <MapDiv
@@ -105,6 +110,7 @@ function Main() {
         setSearchValue={setSearchValue}
         onSearchLocation={onSearchLocation}
       />
+      {/* storage 하나 클릭했을 때 하단에 뜨는 컴포넌트 */}
       <Jimventory
         selectedItem={selectedItem}
         setSelectedItem={setSelectedItem}

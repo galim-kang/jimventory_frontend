@@ -2,10 +2,14 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8000/"; // 장고 백엔드 서버의 URL
 
-// 회원가입 API 함수
+const instance = axios.create({
+  baseURL : `${API_URL}`
+})
+const access = localStorage.getItem("access");
+// 회원가입 API 함수 - 썼다고 함
 export const registerUser = async (username, password, email) => {
   try {
-    const response = await axios.post(`${API_URL}users/signup/`, {
+    const response = await instance.post('users/signup/', {
       username,
       password,
       email,
@@ -17,10 +21,10 @@ export const registerUser = async (username, password, email) => {
   }
 };
 
-// 로그인 API 함수
+// 로그인 API 함수- 썼다고 함
 export const loginUser = async (email, password) => {
   try {
-    const response = await axios.post(`${API_URL}users/api/token/`, {
+    const response = await instance.post('users/api/token/', {
       email,
       password,
     });
@@ -38,11 +42,11 @@ export const logoutUser = () => {
   localStorage.removeItem("access");
   localStorage.removeItem("refresh");
 };
-//사용자 정보 조회
+//사용자 정보 조회- 썼다고 함
 export const getUserDetails = async () => {
-  const access = localStorage.getItem("access");
+  // const access = localStorage.getItem("access");
   try {
-    const response = await axios.get(`${API_URL}users/details/`, {
+    const response = await instance.get('users/details/', {
       headers: {
         Authorization: `Bearer ${access}`,
       },
@@ -57,8 +61,8 @@ export const getUserDetails = async () => {
 export const refreshAccessToken = async () => {
   try {
     const refresh = localStorage.getItem("refresh");
-    const response = await axios.post(
-      "http://localhost:8000/api/token/refresh/",
+    const response = await instance.post(
+      "api/token/refresh/",
       {
         refresh,
       }
@@ -74,11 +78,11 @@ export const refreshAccessToken = async () => {
 // Storage 등록 API 함수
 // ... 기존 코드 ...
 
-export const createStorage = async (storageData) => {
-  const access = localStorage.getItem("access");
+export const createStorage = async (storageData) => { //- 썼다고 함
+  // const access = localStorage.getItem("access");
   try {
-    const response = await axios.post(
-      `${API_URL}storages/create/`,
+    const response = await instance.post(
+      'storages/create/',
       storageData,
       {
         headers: {
@@ -92,9 +96,9 @@ export const createStorage = async (storageData) => {
     return null;
   }
 };
-export const getAllStorages = async () => {
+export const getAllStorages = async () => { // 된다고 함
   try {
-    const response = await axios.get(`${API_URL}storages/storages/`);
+    const response = await instance.get('storages/storages/');
     console.log(response.data, "storageData");
     return response.data;
   } catch (error) {
@@ -103,9 +107,9 @@ export const getAllStorages = async () => {
   }
 };
 
-export const getStorageDetails = async (id) => {
+export const getStorageDetails = async (id) => { // 된다고 함
   try {
-    const response = await axios.get(`${API_URL}storages/storages/${id}/`);
+    const response = await instance.get(`storages/storages/${id}/`);
     return response.data;
   } catch (error) {
     console.error("Error fetching storage details:", error);
@@ -113,15 +117,25 @@ export const getStorageDetails = async (id) => {
   }
 };
 
-export const getReservations = () => {
-  return axios.get(`${API_URL}reservations/reservations/`);
-};
+export const getReservations = async () => {
+try  {
+  const response = await instance.get('reservations/', {
+    headers: {
+      Authorization: `Bearer ${access}`,
+    },
+  });
+  return response.data;
+}catch(error) {
+  console.error('get reservation error', error)
+}
+  
+}; // 예약정보 가져오는게 왜 토큰인증 로직이 없나요?
 
 export const createReservation = async (reservationData) => {
-  const access = localStorage.getItem("access");
+  // const access = localStorage.getItem("access");
   try {
-    const response = await axios.post(
-      `${API_URL}reservations/`,
+    const response = await instance.post(
+      'reservations/',
       reservationData,
       {
         headers: {
@@ -137,18 +151,18 @@ export const createReservation = async (reservationData) => {
 };
 
 export const getReservation = (id) => {
-  return axios.get(`${API_URL}reservations/reservations/${id}/`);
-};
+  return instance.get(`reservations/reservations/${id}/`);
+}; // 마찬가지로 왜 토큰 인증이 없나요?
 
 export const updateReservation = (id, reservationData) => {
-  return axios.put(
-    `${API_URL}reservations/reservations/${id}/`,
+  return instance.put(
+    `reservations/reservations/${id}/`,
     reservationData
   );
 };
 
 export const deleteReservation = (id) => {
-  return axios.delete(`${API_URL}reservations/reservations/${id}/`);
+  return instance.delete(`reservations/reservations/${id}/`);
 };
 
 export const getGeocode = async (address) => {

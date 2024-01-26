@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from "react";
 import styles from "./MyJimventory.module.css";
+import { getReservations } from "../api";
 
 const MyJimventory = () => {
   const [user, setUser] = useState(null);
   const [bookings, setBookings] = useState([]);
 
+  useEffect( ()=> {
+    const getReservation = async () => {
+      const reservations = await getReservations();
+      setBookings(reservations);
+        console.log(reservations, 'reservations')
+    }
+    getReservation();
+  },[])
   // 페이지 로드 시 사용자 데이터를 로드
   // useEffect(() => {
   //   // 이 부분에서 백엔드 API를 호출하여 사용자 데이터를 가져옵니다.

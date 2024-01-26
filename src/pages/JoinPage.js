@@ -29,7 +29,7 @@ const JoinPage = () => {
       setError("회원가입 과정에서 오류가 발생했습니다.");
     }
   };
-
+ // host 일 경우 user_type 을 host or Host로 명시, tourist일 경우 tourist or Tourist로 명시
   return (
     <div className={styles.loginJoinPage}>
       <div className={styles.section}>

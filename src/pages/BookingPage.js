@@ -18,6 +18,7 @@ function BookingPage() {
     const fetchStorageDetails = async () => {
       const data = await getStorageDetails(id);
       setStorageDetails(data);
+      console.log(data, 'bookingPage storage data'); // return response.data 해서 받아온 데이터 .
       console.log(id, "id");
     };
     fetchStorageDetails();
@@ -28,7 +29,7 @@ function BookingPage() {
       ...bookingInfo,
       [event.target.name]: event.target.value,
     });
-  };
+  }; // 입력받은 체크인 데이터 저장
 
   const handleIncrease = () => {
     setBookingInfo({ ...bookingInfo, bags: bookingInfo.bags + 1 });
@@ -53,7 +54,7 @@ function BookingPage() {
       bag_count: bookingInfo.bags, // number of bags
       // 필요한 경우 추가적인 데이터를 여기에 포함
     };
-
+    
     // API 요청을 통해 예약 생성
     const response = await createReservation(reservationData);
     if (response) {
@@ -79,6 +80,7 @@ function BookingPage() {
     <div className={styles.container}>
       <h3 className={styles.sectionIndicator}>Section {section + 1}</h3>
       {section === 0 && storageDetails && (
+        // section 0 , 가게 정보 받아와서 뿌려주는 곳
         <section>
           <p className={styles.description}>{storageDetails.storeType}</p>
           <h1 className={styles.title}>{storageDetails.serviceName}</h1>
