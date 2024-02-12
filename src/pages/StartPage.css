@@ -2,19 +2,32 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap');
 .slick-next:before {
-    font-family: 'FontAwesome';
-    content: '\f0da';
-    font-size: 80px;
+  font-family: 'FontAwesome';
+  content: '\f0da';
+  font-size: 80px;
 }
 
 .slick-next {
-
-    top : 380px;
-    right :-10.5px;
+  top: 380px;
+  right: -10.5px;
 }
 .slick-prev::before {
-    display: none;
+  display: none;
 }
+
+.slick-dots {
+  position: absolute;
+  top: 80px;
+  /* font-size: 20px; */
+  height: 17px;
+}
+.slick-dots li button:before {
+  font-size: 17px;
+}
+.slick-dots li.slick-active button:before {
+  color: #0094ff; /* 원하는 색상으로 조정 */
+}
+
 /* @font-face {
     font-family: 'DM Sans';
     src: url('../fonts/DMSans-Regular.ttf') format('truetype');
