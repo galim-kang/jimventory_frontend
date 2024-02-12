@@ -4,28 +4,80 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-
+import './StartPage.css';
+import JimventoryLogo from '../image/jimventory.png';
+import Section1BackgroundImage from '../image/section1-image.png';
 const StartPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  /* background-color: rgb(255,255,255); */
+  /* background: linear-gradient(#ffffff, #B9E2FF, #0094FF); */
+  width: 393px;
+  height: 852px;
+  border-radius: 35px;
+  overflow: hidden;
+  position : relative;
+  /* box-shadow: inset -12px -12px 16px rgba(154, 50, 50, 0.42), inset 7px 7px 9px rgba(255, 155, 155, 0.7); */
+  /* box-shadow: inset -12px -12px 16px rgba(0, 148, 255, 0.7), inset 7px 7px 9px rgba(185, 226, 255, 0.42); */
+
 `;
 const SliderContainer = styled.div`
-  width: 220px;
-  height: 400px;
-  background-color: rgb(253, 106, 2);
+  width: 393px;
+  height: 852px;
+  color :  rgb(223,225,226);
+  /* background-color: rgb(253, 106, 2); */
 `;
 
-const Section = styled.section``;
-const StartLink = styled(Link)`
-  position: fixed;
-  bottom: 20px;
-  font-size: 20px;
-  text-decoration: none;
+const Section = styled.section`
+width : 393px;
+height: 852px;
+/* background-image: ${props => props.background || 'none'};
+background-position : center;
+background-repeat: no-repeat;
+background-size: cover; */
 `;
+const StartLink = styled(Link)`
+  position: absolute;
+  bottom: 48px;
+  font-size: 36px;
+  font-family: 'Inter';
+  color : rgb(0, 163, 255) ;
+  text-decoration: none;
+  width: 300px;
+  height: 67px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 67px;  /* height 값과 동일하게 설정 */
+  background-color: rgb(255,255,255);
+  border-radius: 50px;
+`;
+const Title = styled.span`
+font-family: 'Inter';
+font-size: 46px;
+border-bottom: 3px solid rgb(223,225,226);
+`
+const ContentDiv = styled.div`
+font-family: 'Inter Bold';
+font-size: 26px;
+color : ${props => props.color || 'white'};
+
+`
+const ContentSpan = styled.span`
+font-family: 'Inter Bold';
+font-size: 26px;
+color : ${props => props.color || 'white'};
+`
+const ContentContainer = styled.div`
+position : absolute;
+padding : 34px 27px;
+height: 287px;
+width : 393px;
+bottom : 0;
+background-color: rgb(0, 148, 255);
+`
 function StartPage() {
   const settings = {
     dots: true,
@@ -39,37 +91,58 @@ function StartPage() {
     <StartPageContainer>
       <SliderContainer>
         <Slider {...settings}>
-          <Section>
-            <div>섹션1</div>
-            <h1>제목</h1>
-            <div>일러스트박스 300px*300px</div>
-            <div>설명텍스트</div>
+        <Section>
+          <div style={{display : 'flex', flexDirection : 'column', alignItems : 'center',justifyContent : 'center'}}>
+          <div style={{fontSize : 24, height : 40, fontFamily : 'DM Sans, sans-serif'}}>open your,</div>
+            <img style={{width :'100%'}} src={JimventoryLogo}></img>
+          </div>
+        
+
+            
           </Section>
           <Section>
-            <div>섹션2</div>
-            <h1>제목</h1>
-            <div>일러스트박스 300px*300px</div>
-            <div>설명텍스트</div>
+            {/* <Title>STEP.1</Title> */}
+            <ContentContainer>
+            <ContentSpan>Find </ContentSpan>
+            <ContentSpan color='black'>Jimventory </ContentSpan>
+            <ContentSpan>near you</ContentSpan>
+            </ContentContainer>
           </Section>
           <Section>
-            <div>섹션3</div>
-            <h1>제목</h1>
-            <div>일러스트박스 300px*300px</div>
-            <div>설명텍스트</div>
+          <Title>STEP.2</Title>
+          <ContentContainer>
+            <ContentSpan>Book</ContentSpan>
+            <ContentSpan>Jimventory</ContentSpan>
+            <ContentSpan>quickly and</ContentSpan>
+            <ContentSpan>easily</ContentSpan>
+            </ContentContainer>
+
           </Section>
           <Section>
-            <div>섹션4</div>
-            <h1>제목</h1>
-            <div>일러스트박스 300px*300px</div>
-            <div>설명텍스트</div>
+          <Title>STEP.3</Title>
+            <ContentContainer>
+            <ContentSpan>Drop off your</ContentSpan>
+            <ContentSpan>luggage</ContentSpan>
+            <ContentSpan>securely</ContentSpan>
+            </ContentContainer>
+          </Section>
+          <Section>
+          <Title>STEP.4</Title>
+            <ContentContainer>
+            <ContentSpan>Enjoy your</ContentSpan>
+            <ContentSpan>adventure</ContentSpan>
+            <ContentSpan>hassle-free!</ContentSpan>
+            </ContentContainer>
           </Section>
         </Slider>
       </SliderContainer>
-      <h1>
+      {/* <h1>
         open your
         <br /> JIMVENTORY
-      </h1>
-      <StartLink to="/main">start</StartLink>
+      </h1> */}
+      
+      <StartLink to="/main">
+        START</StartLink>
     </StartPageContainer>
   );
 }

@@ -1,5 +1,66 @@
-body {
-  margin: 0;
-  padding: 0;
-  border: none;
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap');
+@font-face {
+  font-family: 'DM Sans';
+  src: url('../src/fonts/DMSans-Regular.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'Inter ExtraBold';
+  src: url('../src/fonts/Inter-ExtraBold.ttf');
+}
+@font-face {
+  font-family: 'Inter Medium';
+  src: url('../src/fonts/Inter-Medium.ttf');
+}
+@font-face {
+  font-family: 'Inter Light';
+  src: url('../src/fonts/Inter-Light.ttf');
+}
+@font-face {
+  font-family: 'Inter Bold';
+  src: url('../src/fonts/Inter-Bold.ttf');
+}
+* {
+  margin : 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 30px auto;
+  padding: 0;
+ 
+  width: 393px;
+  height: 852px;
+  border-radius: 35px;
+  box-shadow: 8px 8px 40px rgba(143, 143, 150, 0.55),
+  -10px -10px 30px rgb(255, 255, 255, .8);
+  overflow: hidden;
+
+
+}
+/* .container {
+  width: 375px;
+  
+  border-radius: 35px;
+  box-shadow: 8px 8px 40px rgba(143, 143, 150, 0.55),
+   	      -10px -10px 30px rgb(255, 255, 255, .8);
+
+  margin: 30px auto;
+} */
+/* 
+.inner-container {
+  padding: 0;
+  width: 393px;
+  height: 852px;
+  margin: 30px auto;
+  background: rgba(255, 255, 255, 0);
+
+  border-radius: 35px;
+ 
+   box-shadow: inset -12px -12px 16px rgb(154,154, 172, 0.32), inset 7px 7px 9px rgba(225, 225, 225, 0.6);
+
+  overflow: hidden;
+ 
+} */

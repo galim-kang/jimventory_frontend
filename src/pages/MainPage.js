@@ -12,27 +12,26 @@ import axios from "axios";
 
 import { getAllStorages } from "../api";
 
-const CurrentLocationButton = styled.button`
-  position: absolute;
-  padding: 20px;
-  border: none;
-  border-radius: 50px;
-  box-shadow: rgba(84, 84, 85, 0.8) 0px 0px 8px;
-  background-image: url(${MyLocationIcon});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 26px 26px;
-  background-color: white;
-  bottom: 80px;
-  right: 10px;
-  width: 20px;
-  &:hover {
-    transform: translateY(1px);
-  }
-  &:hover:before {
-    width: 0;
-  }
-`;
+// const CurrentLocationButton = styled.button`
+//   position: absolute;
+//   padding: 20px;
+//   border: none;
+//   border-radius: 50px;
+//   box-shadow: rgba(84, 84, 85, 0.8) 0px 0px 8px;
+//   background-image: url(${MyLocationIcon});
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   background-size: 26px 26px;
+//   bottom: 80px;
+//   right: 10px;
+//   width: 20px;
+//   &:hover {
+//     transform: translateY(1px);
+//   }
+//   &:hover:before {
+//     width: 0;
+//   }
+// `;
 
 function Main() {
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -99,16 +98,31 @@ function Main() {
   // useEffect로 데이터 불러올 시에 의존성 배열에 currentLocation 혹은 현재 위치 값이 담겨야 함. 
 
   return (
+    <div className='main-container' 
+    style={{ position: 'relative' }}
+    >
     <MapDiv
       style={{
-        width: "100%",
-        height: "100vh",
-      }}
+        width: "393px",
+        height: "852px" }}
     >
+    {/* map과 동일한 크기를 가지게 하여 inner box-shadow를 주면서, 마우스이벤트는 작동하지 않게 하여 map과 searchbar클릭이 가능 */}
+    <div style={{
+    position: 'absolute',
+    zIndex:100,
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    boxShadow: 'inset -12px -12px 16px rgb(154,154, 172, 0.32), ' + 'inset 7px 7px 9px rgba(225, 225, 225, 0.6)',
+    overflow : 'hidden',
+    pointerEvents: 'none',
+  }} /> 
       <SearchBar
         searchValue={searchValue}
         setSearchValue={setSearchValue}
         onSearchLocation={onSearchLocation}
+        handleCenterToCurrentLocation={handleCenterToCurrentLocation} 
       />
       {/* storage 하나 클릭했을 때 하단에 뜨는 컴포넌트 */}
       <Jimventory
@@ -152,8 +166,9 @@ function Main() {
           </div>
         ))}
       </NaverMap>
-      <CurrentLocationButton onClick={handleCenterToCurrentLocation} />
+      {/* <CurrentLocationButton onClick={handleCenterToCurrentLocation} /> */}
     </MapDiv>
+    </div>
   );
 }
 

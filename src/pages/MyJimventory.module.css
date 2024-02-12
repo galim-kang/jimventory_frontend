@@ -4,7 +4,10 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  margin-top: 60px;
+  /* margin-top: 60px; */
+  position : relative;
+  width: 393px;
+  height: 852px;
 }
 
 .container h3 {

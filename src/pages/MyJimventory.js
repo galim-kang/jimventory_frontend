@@ -30,6 +30,17 @@ const MyJimventory = () => {
 
   return (
     <div className={styles.container}>
+        <div style={{
+    position: 'absolute',
+    zIndex:100,
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    boxShadow: 'inset -12px -12px 16px rgb(154,154, 172, 0.32), ' + 'inset 7px 7px 9px rgba(225, 225, 225, 0.6)',
+    overflow : 'hidden',
+    pointerEvents: 'none',
+  }} /> 
       <h3>My Jimventory</h3>
       {user ? (
         <div>

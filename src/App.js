@@ -18,6 +18,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
+        <div className="inner-container">
         <Routes>
           <Route path="/" element={<StartPage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -63,6 +64,7 @@ function App() {
             }
           />
         </Routes>
+        </div>
       </Router>
     </AuthProvider>
   );

@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import React, { useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -13,54 +13,67 @@ const Container = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 200px;
+  height: 272px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #fff;
   padding: 20px;
   box-sizing: border-box;
+  background-color:  rgb(255,55,55);
   box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
   animation: ${fadeIn} 1s ease;
-  z-index: 1;
+  z-index: 10;
 `;
 const Wrapper = styled.div`
   display: flex;
   width: 300px;
-  justify-content: start;
+  justify-content: space-between;
 `;
 const Icon = styled.div`
   width: 80px;
   height: 80px;
-  background-color: grey;
-  margin-right: 20px;
-`;
-const Title = styled.h1`
-  margin: 0;
-  font-size: 22px;
-`;
+  background-color: rgb(223, 225, 226);
+  border-radius: 50%;
 
-const Description = styled.p`
-  margin: 0;
-  font-size: 16px;
 `;
-const BookNow = styled(Link)`
+const Title = styled.div`
+font-family: 'Inter';
+  font-size: 30px;
+  color : rgb(223, 225, 226);
+`;
+const StoreType = styled.div`
+  font-size: 16px;
+  font-family: 'Inter Medium';
+  color : rgb(223, 225, 226);
+`
+const Description = styled.div`
+  font-size: 20px;
+  font-family: 'Inter Medium';
+  color : rgb(223, 225, 226);
+`;
+// const BookNow = styled(Link)` => link 태그에서 괄호로 사용하나?
+const BookNow = styled.button`
+  all : unset;
+  font-family: 'Inter';
   display: inline-block;
-  margin: 10px 0;
+  margin-top: 10px;
   width: 300px;
-  padding: 8px 0;
+  height: 67px;
+  /* padding: 8px 0; */
+  border-radius: 50px;
   cursor: pointer;
-  background-color: rgb(253, 106, 2);
-  color: white;
-  font-size: 24px;
+  background-color: rgb(223, 225, 226);
+  color:  rgb(255,55,55);
+  font-size: 36px;
   text-align: center;
-  text-decoration: none;
 `;
 const Jimventory = ({ selectedItem, setSelectedItem }) => {
   const containerRef = useRef();
-
+  const navigate = useNavigate();
   useEffect(() => {
+    console.log(selectedItem, 'selectedItem');
     const handleClickOutside = (event) => {
       if (
         containerRef.current &&
@@ -83,16 +96,17 @@ const Jimventory = ({ selectedItem, setSelectedItem }) => {
   return (
     <Container ref={containerRef}>
       <Wrapper>
-        <Icon />
         <div>
+        <StoreType>{storeType}</StoreType>
+        <Title>{serviceName}</Title>
           <Description>
             {operatingTime[0]} - {operatingTime[1]}
           </Description>
-          <Title>{serviceName}</Title>
-          <Description>{storeType}</Description>
         </div>
+        <Icon />
       </Wrapper>
-      <BookNow to={`/booking/${selectedItem.id}`}>Book Now!</BookNow>
+      
+      <BookNow onClick={()=> navigate(`/booking/${selectedItem.id}`)}>Book Now!</BookNow>
     </Container>
   );
 };
