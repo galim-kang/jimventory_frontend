@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import './StartPage.css';
 import Section1BackgroundImage from '../image/section1-image.png';
 import OpenYourJimventory from '../components/OpenYourJimventory';
+import Frame from '../image/frame.png';
 const StartPageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -87,7 +88,7 @@ function StartPage() {
   };
 
   return (
-    <StartPageContainer>
+    <StartPageContainer frame={Frame}>
       <SliderContainer>
         <Slider {...settings}>
           <Section>
@@ -107,7 +108,6 @@ function StartPage() {
             </ContentContainer>
           </Section>
           <Section>
-            {/* <Title>STEP.2</Title> */}
             {/* <OpenYourJimventory /> */}
             <ContentContainer>
               <ContentSpan>Book </ContentSpan>
@@ -116,7 +116,6 @@ function StartPage() {
             </ContentContainer>
           </Section>
           <Section>
-            {/* <Title>STEP.3</Title> */}
             {/* <OpenYourJimventory /> */}
             <ContentContainer>
               <ContentDiv>Drop off your</ContentDiv>
@@ -124,7 +123,6 @@ function StartPage() {
             </ContentContainer>
           </Section>
           <Section>
-            {/* <Title>STEP.4</Title> */}
             {/* <OpenYourJimventory /> */}
             <ContentContainer>
               <ContentDiv>Enjoy your adventure</ContentDiv>

@@ -22,7 +22,7 @@
   src: url('../src/fonts/Inter-Bold.ttf');
 }
 * {
-  margin : 0;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -30,15 +30,13 @@
 body {
   margin: 30px auto;
   padding: 0;
- 
+
   width: 393px;
   height: 852px;
   border-radius: 35px;
   box-shadow: 8px 8px 40px rgba(143, 143, 150, 0.55),
-  -10px -10px 30px rgb(255, 255, 255, .8);
+    -10px -10px 30px rgb(255, 255, 255, 0.8);
   overflow: hidden;
-
-
 }
 /* .container {
   width: 375px;
