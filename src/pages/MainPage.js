@@ -85,7 +85,7 @@ function Main() {
   useEffect(() => {
     // 컴포넌트가 마운트될 때 Storage 데이터를 불러오는 함수
     const fetchStorages = async () => {
-      // const storages = await getAllStorages(); // ===============> api 주석처리
+      // const storages = await getAllStorages(); ===============> api 주석처리
       // setStorageData(storages); // ============> api 주석에 따른 주석처리
       setStorageData(dummyStorages);
       console.log(dummyStorages, 'dummyStorages');

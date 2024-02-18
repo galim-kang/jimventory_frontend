@@ -8,7 +8,6 @@ import './StartPage.css';
 import Section1BackgroundImage from '../image/section1-image.png';
 import OpenYourJimventory from '../components/OpenYourJimventory';
 import Frame from '../image/frame.png';
-import LogoSection1 from '../image/Logo_section1.png';
 const StartPageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -39,11 +38,6 @@ const Section = styled.section`
 background-position : center;
 background-repeat: no-repeat;
 background-size: cover; */
-`;
-
-const ImageSection = styled.img`
-  width: 393px;
-  height: 300px;
 `;
 const StartLink = styled(Link)`
   position: absolute;
@@ -99,9 +93,6 @@ function StartPage() {
         <Slider {...settings}>
           <Section>
             <OpenYourJimventory />
-            <div>
-              <ImageSection src={LogoSection1}></ImageSection>
-            </div>
             <ContentContainer>
               <ContentDiv>the easiest way to store</ContentDiv>
               <ContentDiv>your luggage</ContentDiv>

@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { createReservation, getStorageDetails } from '../api';
-import styles from './BookingPage.module.css';
-import { dummyStorages } from '../dummyData/getAllStorages';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { createReservation, getStorageDetails } from "../api";
+import styles from "./BookingPage.module.css";
 
 function BookingPage() {
   const { id } = useParams();
 
   const [storageDetails, setStorageDetails] = useState(null);
   const [bookingInfo, setBookingInfo] = useState({
-    checkIn: '',
+    checkIn: "",
     bags: 1,
   });
   const [section, setSection] = useState(0);
@@ -17,12 +16,10 @@ function BookingPage() {
 
   useEffect(() => {
     const fetchStorageDetails = async () => {
-      // const data = await getStorageDetails(id);
-      // setStorageDetails(data);
-      const data = dummyStorages.find((storage) => storage.id == id);
+      const data = await getStorageDetails(id);
       setStorageDetails(data);
       console.log(data, 'bookingPage storage data'); // return response.data 해서 받아온 데이터 .
-      console.log(id, 'id');
+      console.log(id, "id");
     };
     fetchStorageDetails();
   }, [id]);
@@ -57,13 +54,13 @@ function BookingPage() {
       bag_count: bookingInfo.bags, // number of bags
       // 필요한 경우 추가적인 데이터를 여기에 포함
     };
-
+    
     // API 요청을 통해 예약 생성
     const response = await createReservation(reservationData);
     if (response) {
-      console.log('Reservation successful:', response);
+      console.log("Reservation successful:", response);
     } else {
-      console.error('Reservation failed');
+      console.error("Reservation failed");
     }
   };
 
@@ -95,11 +92,10 @@ function BookingPage() {
             ))}
           <p>{storageDetails.introduction}</p>
           <p className={styles.time}>
-            {/* Operating Time: {storageDetails.operatingTime[0]} -{' '} {storageDetails.operatingTime[1]} */}
-            Operating Time : {storageDetails.operatingTime.start} -{' '}
-            {storageDetails.operatingTime.end}
+            Operating Time: {storageDetails.operatingTime[0]} -{" "}
+            {storageDetails.operatingTime[1]}
           </p>
-          <p>tel: {storageDetails.contact_info}</p>
+          <p>tel: 02-123-4567</p>
           <button className={styles.moveButton} onClick={nextSection}>
             Next
           </button>

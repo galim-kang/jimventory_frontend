@@ -62,25 +62,3 @@ body {
   overflow: hidden;
  
 } */
-/* .iphone-frame {
-  background-image: url('../src//image/frame.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-} */
-/* body {
-  margin: 30px auto;
-  padding: 0;
-  width: 393px;
-  height: 872px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url('../src//image/frame.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 454px 923px;
-  box-shadow: 8px 8px 40px rgba(143, 143, 150, 0.55),
-    -10px -10px 30px rgb(255, 255, 255, 0.8);
-  border-radius: 40px;
-} */

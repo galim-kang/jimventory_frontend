@@ -2,7 +2,7 @@ export const dummyStorages = [
   {
     address: '서울 성동구 성수동2가 289-290',
     available: true, // 현재 이용 가능한지 여부
-    contact_info: '010-9160-2600', // 가게 연락처
+    contact_info: '01091602600', // 가게 연락처
     description: ['2f', 'no-elevator', 'wheelchair-friendly'],
     hostUser: 'galim',
     id: 1, // id???
@@ -13,15 +13,11 @@ export const dummyStorages = [
     longitude: 127.053585,
     serviceName: 'heehee cafe',
     storeType: 'cafe',
-    operatingTime: {
-      start: '10:00',
-      end: '23:00',
-    },
   },
   {
     address: '서울 중구 명동2가 1-8',
     available: false, // 현재 이용 가능한지 여부
-    contact_info: '010-9160-2600', // 가게 연락처
+    contact_info: '01091602600', // 가게 연락처
     description: ['2f', 'no-elevator', 'wheelchair-friendly'],
     hostUser: 'god',
     id: 2, // id???
@@ -32,9 +28,5 @@ export const dummyStorages = [
     longitude: 126.987371,
     serviceName: 'Myengdong Cathedral',
     storeType: 'cathedral',
-    operatingTime: {
-      start: '10:00',
-      end: '23:00',
-    },
   },
 ];
