@@ -18,54 +18,52 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="iphone-frame">
-          <div className="inner-container">
-            <Routes>
-              <Route path="/" element={<StartPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/join" element={<JoinPage />} />
-              <Route
-                path="/landing"
-                element={
-                  <Layout>
-                    <LandingPage />
-                  </Layout>
-                }
-              />
-              <Route
-                path="/main"
-                element={
-                  <Layout>
-                    <MainPage />
-                  </Layout>
-                }
-              />
-              <Route
-                path="/my-jimventory"
-                element={
-                  <Layout>
-                    <MyJimventory />
-                  </Layout>
-                }
-              />
-              <Route
-                path="/my-page"
-                element={
-                  <Layout>
-                    <MyPage />
-                  </Layout>
-                }
-              />
-              <Route
-                path="/booking/:id"
-                element={
-                  <Layout>
-                    <BookingPage />
-                  </Layout>
-                }
-              />
-            </Routes>
-          </div>
+        <div className="inner-container">
+          <Routes>
+            <Route path="/" element={<StartPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/join" element={<JoinPage />} />
+            <Route
+              path="/landing"
+              element={
+                <Layout>
+                  <LandingPage />
+                </Layout>
+              }
+            />
+            <Route
+              path="/main"
+              element={
+                <Layout>
+                  <MainPage />
+                </Layout>
+              }
+            />
+            <Route
+              path="/my-jimventory"
+              element={
+                <Layout>
+                  <MyJimventory />
+                </Layout>
+              }
+            />
+            <Route
+              path="/my-page"
+              element={
+                <Layout>
+                  <MyPage />
+                </Layout>
+              }
+            />
+            <Route
+              path="/booking/:id"
+              element={
+                <Layout>
+                  <BookingPage />
+                </Layout>
+              }
+            />
+          </Routes>
         </div>
       </Router>
     </AuthProvider>

@@ -9,6 +9,16 @@ const fadeIn = keyframes`
     opacity: 1;
   }
 `;
+const WhiteInter = styled.div`
+  font-family: 'Inter';
+  color: rgb(223, 225, 226);
+  font-size: ${(props) => props.fontSize || '18px'};
+`;
+const WhiteInterMedium = styled.div`
+  font-family: 'Inter Medium';
+  color: rgb(223, 225, 226);
+  font-size: ${(props) => props.fontSize || '18px'};
+`;
 const Container = styled.div`
   position: absolute;
   bottom: 0;
@@ -36,23 +46,13 @@ const Icon = styled.div`
   height: 80px;
   background-color: rgb(223, 225, 226);
   border-radius: 50%;
+  flex-shrink: 0;
 `;
-const Title = styled.div`
-  font-family: 'Inter';
-  font-size: 30px;
-  color: rgb(223, 225, 226);
-`;
-const StoreType = styled.div`
-  font-size: 16px;
-  font-family: 'Inter Medium';
-  color: rgb(223, 225, 226);
-`;
-const Description = styled.div`
-  font-size: 20px;
-  font-family: 'Inter Medium';
-  color: rgb(223, 225, 226);
-`;
-// const BookNow = styled(Link)` => link 태그에서 괄호로 사용하나?
+const Title = styled(WhiteInter)``;
+const StoreType = styled(WhiteInterMedium)``;
+const Description = styled(WhiteInterMedium)``;
+const OperatingTime = styled(WhiteInter)``;
+// const BookNow = styled(Link)` => Link 태그 확장
 const BookNow = styled.button`
   all: unset;
   font-family: 'Inter';
@@ -68,6 +68,7 @@ const BookNow = styled.button`
   font-size: 36px;
   text-align: center;
 `;
+
 const Jimventory = ({ selectedItem, setSelectedItem }) => {
   const containerRef = useRef();
   const navigate = useNavigate();
@@ -97,16 +98,17 @@ const Jimventory = ({ selectedItem, setSelectedItem }) => {
     <Container ref={containerRef}>
       <Wrapper>
         <div>
-          <StoreType>{storeType}</StoreType>
-          <Title>{serviceName}</Title>
-          <Description>
+          <StoreType fontSize="16px">{storeType}</StoreType>
+          <Title fontSize="30px">{serviceName}</Title>
+          <OperatingTime fontSize="20px">
             {/* {operatingTime[0]} - {operatingTime[1]} */}
-            {operatingTime}
+            {operatingTime.start} - {operatingTime.end}
+          </OperatingTime>
+          <Description fontSize="15px">
+            {description.map((item) => (
+              <span>{item} </span>
+            ))}
           </Description>
-          <div>{introduction}</div>
-          {description.map((item) => (
-            <span>{item}</span>
-          ))}
         </div>
         <Icon />
       </Wrapper>
