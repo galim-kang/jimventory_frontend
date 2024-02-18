@@ -3,35 +3,42 @@ import { useState, useEffect } from 'react';
 import { styled } from 'styled-components';
 // import { Polyline } from "react-naver-maps";
 import Jimventory from '../components/Jimventory';
-
+import MarkerTrue from '../image/MarkerTrue.png';
+import MarkerFalse from '../image/MarkerFalse.png';
 import SearchBar from '../components/SearchBar';
-import MyLocationIcon from '../image/MyLocation .png';
+import MyLocationIcon from '../image/MyLocation.png';
 import MarkerIcon from '../image/MarkerIcon .png';
 import UserIcon from '../image/UserIcon.png';
 import axios from 'axios';
 import { dummyStorages } from '../dummyData/getAllStorages';
 import { getAllStorages } from '../api';
 
-// const CurrentLocationButton = styled.button`
-//   position: absolute;
-//   padding: 20px;
-//   border: none;
-//   border-radius: 50px;
-//   box-shadow: rgba(84, 84, 85, 0.8) 0px 0px 8px;
-//   background-image: url(${MyLocationIcon});
-//   background-repeat: no-repeat;
-//   background-position: center;
-//   background-size: 26px 26px;
-//   bottom: 80px;
-//   right: 10px;
-//   width: 20px;
-//   &:hover {
-//     transform: translateY(1px);
-//   }
-//   &:hover:before {
-//     width: 0;
-//   }
-// `;
+const CurrentLocationButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding: 20px;
+  border: none;
+  border-radius: 50px;
+  /* box-shadow: rgba(84, 84, 85, 0.8) 0px 0px 8px; */
+  /* background-image: url(${MyLocationIcon});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60px; */
+  background-color: #0094ff;
+  width: 60px;
+  height: 60px;
+  bottom: 112px;
+  right: 13px;
+  /* width: 20px; */
+  &:hover {
+    transform: translateY(1px);
+  }
+  &:hover:before {
+    width: 0;
+  }
+`;
 
 function Main() {
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -85,7 +92,7 @@ function Main() {
   useEffect(() => {
     // 컴포넌트가 마운트될 때 Storage 데이터를 불러오는 함수
     const fetchStorages = async () => {
-      // const storages = await getAllStorages(); ===============> api 주석처리
+      // const storages = await getAllStorages(); // ===============> api 주석처리
       // setStorageData(storages); // ============> api 주석에 따른 주석처리
       setStorageData(dummyStorages);
       console.log(dummyStorages, 'dummyStorages');
@@ -107,7 +114,7 @@ function Main() {
         }}
       >
         {/* map과 동일한 크기를 가지게 하여 inner box-shadow를 주면서, 마우스이벤트는 작동하지 않게 하여 map과 searchbar클릭이 가능 */}
-        <div
+        {/* <div
           style={{
             position: 'absolute',
             zIndex: 100,
@@ -121,7 +128,7 @@ function Main() {
             overflow: 'hidden',
             pointerEvents: 'none',
           }}
-        />
+        /> */}
         <SearchBar
           searchValue={searchValue}
           setSearchValue={setSearchValue}
@@ -167,15 +174,17 @@ function Main() {
                   // calculateDistance(storage.longitude, storage.latitude);
                 }}
                 icon={{
-                  url: MarkerIcon, // 아이콘 이미지 URL
+                  url: storage.available === true ? MarkerTrue : MarkerFalse, // 아이콘 이미지 URL
                   anchor: { x: 12, y: 36 }, // 앵커포인트 위치 (중심점 기준)
-                  scaledSize: { width: 32, height: 32 }, //조절된 크기
+                  scaledSize: { width: 46, height: 63 }, //조절된 크기
                 }}
               />
             </div>
           ))}
         </NaverMap>
-        {/* <CurrentLocationButton onClick={handleCenterToCurrentLocation} /> */}
+        <CurrentLocationButton onClick={handleCenterToCurrentLocation}>
+          <img style={{ width: 35, height: 35 }} src={MyLocationIcon} />
+        </CurrentLocationButton>
       </MapDiv>
     </div>
   );

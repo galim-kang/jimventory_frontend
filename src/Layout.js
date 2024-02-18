@@ -1,10 +1,18 @@
-import Menu from "./components/Menu";
+import Menu from './components/Menu';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, menu }) => {
   return (
-    <div className="layout" style={{height : 852, position : 'relative', overflow : 'hidden', borderRadius : 35}}>
+    <div
+      className="layout"
+      style={{
+        height: 852,
+        position: 'relative',
+        overflow: 'hidden',
+        borderRadius: 35,
+      }}
+    >
       {children}
-      <Menu />
+      {menu && menu === 'true' && <Menu />}
     </div>
   );
 };
