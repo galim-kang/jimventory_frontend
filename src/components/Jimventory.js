@@ -144,8 +144,8 @@ const Jimventory = ({ selectedItem, setSelectedItem }) => {
         </TitleSection>
         <div>
           <Description>
-            {description.map((item) => (
-              <span>{item} </span>
+            {description.map((item, index) => (
+              <span key={index}>{item} </span>
             ))}
           </Description>
         </div>
