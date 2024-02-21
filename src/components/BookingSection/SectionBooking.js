@@ -20,7 +20,7 @@ const TitleSection = styled.div`
   padding: 49px 38px;
 `;
 const DateSection = styled.div`
-  padding: 33px 38px 336px 38px;
+  padding: 33px 38px 220px 38px;
 `;
 const ButtonSection = styled.div`
   display: flex;
@@ -52,11 +52,11 @@ const BagMessage = styled(BlackFont)`
   font-size: 18px;
 `;
 const CountSection = styled.div`
-  width: 339px;
+  width: ${(props) => props.width};
   height: 53px;
   background-color: #f4f4f4;
   border-radius: 50px;
-  margin-bottom: 37px;
+  margin-bottom: ${(props) => props.marginBottom};
   display: flex;
   justify-content: space-between;
   padding: 0 27px;
@@ -86,11 +86,12 @@ const CheckText = styled.div`
   color: #1c1e1c;
   font-size: 18px;
   font-family: 'Inter Bold';
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 `;
 const SectionBooking = () => {
   const [count, setCount] = useState(1);
   // const [price, setPrice] = useState(0);
+  const [hours, setHours] = useState(1);
   const [dateValue, setDateValue] = useRecoilState(dateState);
   const [section, setSection] = useRecoilState(sectionState);
   const [checkIn, setCheckIn] = useState('');
@@ -98,6 +99,19 @@ const SectionBooking = () => {
 
   const handleCheckInChange = (event) => {
     const value = event.target.value;
+
+    const originalDateTimeString = value;
+    const dateTime = new Date(originalDateTimeString);
+
+    const formattedDateTime = dateTime.toLocaleString('ko', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+    console.log(value, 'check-in value');
+    console.log(formattedDateTime);
     setCheckIn(value);
     const minutes = value.slice(14, 16);
     setCheckOut((prevValue) => {
@@ -112,10 +126,6 @@ const SectionBooking = () => {
     setCheckOut(value);
   };
 
-  const handleMinuteChange = (event) => {
-    // 분 변경을 막음
-    event.preventDefault();
-  };
   const nextSection = () => {
     if (section < 3) {
       setSection((prevSection) => prevSection + 1);
@@ -149,7 +159,13 @@ const SectionBooking = () => {
         <DateSection>
           <CheckText>Check-in</CheckText>
           <input
-            style={{ marginBottom: 15, width: '100%', borderRadius: 20 }}
+            style={{
+              marginBottom: 15,
+              marginTop: 0,
+              width: '100%',
+              height: 50,
+              borderRadius: 50,
+            }}
             type="datetime-local"
             name="checkIn"
             id="checkIn"
@@ -158,8 +174,20 @@ const SectionBooking = () => {
             //  value={bookingInfo.checkIn}
             // onChange={handleInputChange}
           />
-          <CheckText>Check-in</CheckText>
-          <input
+          <CheckText>Operating-hours</CheckText>
+          <CountSection width="100%" marginBottom="15px">
+            <div style={{ height: 33.7 }} onClick={handleCountDown}>
+              <CountImage src={CountDown} />
+            </div>
+            <CountText>{count}</CountText>
+            <div style={{ height: 33.7 }} onClick={handleCountUp}>
+              <CountImage src={CountUp} />
+            </div>
+          </CountSection>
+          <CheckText>Check-out</CheckText>
+          <div>2024.</div>
+          <div>You can check out anytime before</div>
+          {/* <input
             style={{ width: '100%', borderRadius: 20 }}
             type="datetime-local"
             name="checkIn"
@@ -169,14 +197,14 @@ const SectionBooking = () => {
             onFocus={handleMinuteChange}
             //  value={bookingInfo.checkIn}
             // onChange={handleInputChange}
-          />
+          /> */}
         </DateSection>
       )}
       {section === 2 && (
         <>
           <Section>
             <BagMessage>How many bags do you have?</BagMessage>
-            <CountSection>
+            <CountSection width="339px" marginBottom="37px">
               <div style={{ height: 33.7 }} onClick={handleCountDown}>
                 <CountImage src={CountDown} />
               </div>
