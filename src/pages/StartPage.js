@@ -9,6 +9,9 @@ import Section1BackgroundImage from '../image/section1-image.png';
 import OpenYourJimventory from '../components/OpenYourJimventory';
 import Frame from '../image/frame.png';
 import OriginalLogo from '../image/OriginalLogo.png';
+import PhoneLogo from '../image/PhoneImage.png';
+import Carrier from '../image/Carrier.png';
+import CompleteLogo from '../image/CompleteLogo.png';
 const StartPageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -62,7 +65,12 @@ const Logo = styled.img`
   width: 393px;
   height: 615px;
 `;
-
+const Phone = styled.img`
+  width: 290px;
+  height: 577px;
+  margin-left: 52px;
+  margin-top: 10px;
+`;
 const Title = styled.span`
   font-family: 'Inter';
   font-size: 46px;
@@ -85,6 +93,17 @@ const ContentContainer = styled.div`
   width: 393px;
   bottom: 0;
   background-color: rgb(0, 148, 255);
+`;
+const CarrierImage = styled.img`
+  width: 333px;
+  height: 560px;
+  margin-left: 12px;
+`;
+const Complete = styled.img`
+  width: 350px;
+  height: 350px;
+  margin-left: 40px;
+  margin-top: 80px;
 `;
 function StartPage() {
   const settings = {
@@ -118,6 +137,7 @@ function StartPage() {
           </Section>
           <Section>
             {/* <OpenYourJimventory /> */}
+            <Phone src={PhoneLogo} />
             <ContentContainer>
               <ContentSpan>Book </ContentSpan>
               <ContentSpan color="black">Jimventory</ContentSpan>
@@ -125,6 +145,7 @@ function StartPage() {
             </ContentContainer>
           </Section>
           <Section>
+            <CarrierImage src={Carrier} />
             {/* <OpenYourJimventory /> */}
             <ContentContainer>
               <ContentDiv>Drop off your</ContentDiv>
@@ -133,6 +154,7 @@ function StartPage() {
           </Section>
           <Section>
             {/* <OpenYourJimventory /> */}
+            <Complete src={CompleteLogo} />
             <ContentContainer>
               <ContentDiv>Enjoy your adventure</ContentDiv>
               <ContentDiv>hassle-free!</ContentDiv>

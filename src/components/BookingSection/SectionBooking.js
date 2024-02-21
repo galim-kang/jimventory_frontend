@@ -5,8 +5,10 @@ import PolygonPrev from '../../image/PolygonPrev.png';
 import PolygonNext from '../../image/PolygonNext.png';
 import CountDown from '../../image/CountDown.png';
 import CountUp from '../../image/CountUp.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { dateState } from '../../atoms/dateInput';
+import { format, setMinutes } from 'date-fns';
+import { hourState } from '../../atoms/hoursInput';
 const BlackFont = styled.div`
   color: #1c1e1c;
   font-family: 'Inter Bold';
@@ -61,6 +63,7 @@ const CountSection = styled.div`
   justify-content: space-between;
   padding: 0 27px;
   align-items: center;
+  border-bottom: ${(props) => props.borderBottom || '0px'};
 `;
 const TotalPrice = styled(BlackFont)`
   font-size: 18px;
@@ -92,46 +95,63 @@ const SectionBooking = () => {
   const [count, setCount] = useState(1);
   // const [price, setPrice] = useState(0);
   const [hours, setHours] = useState(1);
+  const [minutes, setMinutes] = useState('');
   const [dateValue, setDateValue] = useRecoilState(dateState);
   const [section, setSection] = useRecoilState(sectionState);
+  const [hourRecoilState, setHourRecoilState] = useRecoilState(hourState);
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
-
+  const [totalPrice, setTotalPrice] = useState(1200);
   const handleCheckInChange = (event) => {
     const value = event.target.value;
-
-    const originalDateTimeString = value;
-    const dateTime = new Date(originalDateTimeString);
-
-    const formattedDateTime = dateTime.toLocaleString('ko', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
-    console.log(value, 'check-in value');
-    console.log(formattedDateTime);
+    const formatValue = format(new Date(value), 'yyyy.MM.dd HH:mm');
+    // setCheckIn(formatValue.replace('T', '  '));
     setCheckIn(value);
-    const minutes = value.slice(14, 16);
-    setCheckOut((prevValue) => {
-      const checkOutTime =
-        prevValue.slice(0, 14) + minutes + prevValue.slice(16);
-      return checkOutTime;
-    });
+  };
+  const addHoursToDateTime = (dateTimeString, hoursToAdd) => {
+    // 주어진 문자열을 기반으로 Date 객체를 생성합니다.
+    const dateTime = new Date(dateTimeString);
+
+    // 사용자가 입력한 시간을 더합니다.
+    dateTime.setHours(dateTime.getHours() + hoursToAdd);
+
+    // 만약 시간이 24:00 이상이라면 날짜를 업데이트하고 시간을 조정합니다.
+    if (dateTime.getHours() >= 24) {
+      // 다음 날로 넘어감
+      dateTime.setDate(dateTime.getDate() + 1);
+      // 시간을 24시간으로 조정
+      dateTime.setHours(dateTime.getHours() - 24);
+    }
+
+    // 날짜 및 시간을 문자열로 변환하여 반환합니다.
+    const year = dateTime.getFullYear();
+    const month = ('0' + (dateTime.getMonth() + 1)).slice(-2);
+    const day = ('0' + dateTime.getDate()).slice(-2);
+    const hours = ('0' + dateTime.getHours()).slice(-2);
+    const minutes = ('0' + dateTime.getMinutes()).slice(-2);
+
+    // return `${year}.${month}.${day} ${hours}:${minutes}`;
+    const newDateValue = `${year}.${month}.${day} ${hours}:${minutes}`;
+    setCheckOut(newDateValue);
+    setMinutes(`${hours}:${minutes}`);
   };
 
-  const handleCheckOutChange = (event) => {
-    const value = event.target.value;
-    setCheckOut(value);
-  };
-
+  useEffect(() => {
+    if (checkIn) {
+      addHoursToDateTime(checkIn, hours);
+    }
+  }, [checkIn, hours]);
+  // useEffect(() => {
+  //   calculateTotal();
+  // }, [hours, count]);
   const nextSection = () => {
     if (section < 3) {
       setSection((prevSection) => prevSection + 1);
     }
+    if (section === 1) {
+      setHourRecoilState(hours);
+    }
   };
-
   const prevSection = () => {
     if (section > 0) {
       setSection((prevSection) => prevSection - 1);
@@ -147,7 +167,7 @@ const SectionBooking = () => {
   };
   const calculateTotal = () => {
     const defaultCost = 1200;
-    return count * defaultCost * dateValue;
+    return count * defaultCost * hourRecoilState;
   };
   return (
     <div>
@@ -176,17 +196,34 @@ const SectionBooking = () => {
           />
           <CheckText>Operating-hours</CheckText>
           <CountSection width="100%" marginBottom="15px">
-            <div style={{ height: 33.7 }} onClick={handleCountDown}>
+            <div
+              style={{ height: 33.7 }}
+              onClick={() => {
+                if (hours > 1) {
+                  setHours((prevHours) => prevHours - 1);
+                }
+              }}
+            >
               <CountImage src={CountDown} />
             </div>
-            <CountText>{count}</CountText>
-            <div style={{ height: 33.7 }} onClick={handleCountUp}>
+            <CountText>{hours}</CountText>
+            <div
+              style={{ height: 33.7 }}
+              onClick={() => setHours((prevHours) => prevHours + 1)}
+            >
               <CountImage src={CountUp} />
             </div>
           </CountSection>
+          <div
+            style={{
+              height: 2,
+              borderBottom: '2px solid #d9d9d9',
+              margin: '20px 0 15px 0',
+            }}
+          ></div>
           <CheckText>Check-out</CheckText>
-          <div>2024.</div>
-          <div>You can check out anytime before</div>
+          <CountText>{checkOut}</CountText>
+          <div>You can check out anytime before {minutes}</div>
           {/* <input
             style={{ width: '100%', borderRadius: 20 }}
             type="datetime-local"

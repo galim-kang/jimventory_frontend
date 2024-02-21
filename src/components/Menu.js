@@ -54,7 +54,7 @@ const Menu = ({ setMenuOpen }) => {
   return (
     <MenuBar>
       <IconContainer>
-        <InfoIcon icon={MenuInfo} onClick={() => navigate('/landing')} />
+        <InfoIcon icon={MenuInfo} onClick={() => navigate('/')} />
         <InfoIcon icon={MenuLocation} onClick={() => navigate('/main')} />
         <InfoIcon
           icon={MenuTicket}
