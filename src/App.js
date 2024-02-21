@@ -2,9 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 
-import LandingPage from './pages/LandingPage';
-import LoginPage from './pages/LoginPage';
-import JoinPage from './pages/JoinPage';
 import MainPage from './pages/MainPage';
 import BookingPage from './pages/BookingPage';
 import MyJimventory from './pages/MyJimventory';
@@ -21,16 +18,7 @@ function App() {
         <div className="inner-container">
           <Routes>
             <Route path="/" element={<StartPage />} />
-            {/* <Route path="/login" element={<LoginPage />} />
-            <Route path="/join" element={<JoinPage />} /> */}
-            {/* <Route
-              path="/landing"
-              element={
-                <Layout>
-                  <LandingPage />
-                </Layout>
-              }
-            /> */}
+
             <Route
               path="/main"
               element={

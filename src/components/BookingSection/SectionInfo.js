@@ -7,18 +7,13 @@ import PolygonDown from '../../image/PolygonDown.png';
 import PolygonUp from '../../image/PolygonUp.png';
 import MenuSection from './MenuSection';
 import CancelLogo from '../../image/CancelX.png';
-// const Container = styled.div`
-//   position: relative;
-//   width: 393px;
-//   height: 100%;
-// `;
+
 const Reserve = styled.button`
   all: unset;
   font-family: 'Inter';
   display: inline-block;
   width: 339px;
   height: 53px;
-  /* padding: 8px 0; */
   border-radius: 50px;
   cursor: pointer;
   background-color: #0094ff;
@@ -32,19 +27,8 @@ const ButtonSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* ${(props) =>
-    props.isScrolled &&
-    css`
-      width: 393px;
-      height: 240px;
-      border-top: 1px solid black;
-    `} */
 `;
 const StorageImage = styled.img`
-  /* position: absolute;
-  top: -9px;
-  left: -18px; */
   width: 432px;
   height: 569px;
 `;

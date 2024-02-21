@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { sectionState } from '../../atoms/setcion';
 const Img = styled.img`
-  /* position: absolute;
-  top: 153; */
   margin-top: 153px;
   margin-left: 21px;
   width: 387px;

@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import styles from './MyJimventory.module.css';
-import { getReservations } from '../api';
 import { dummyReservations } from '../dummyData/getReservations';
 import styled from 'styled-components';
-
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-between; */
+  padding: 38px 17px 0 17px;
+  /* margin-top: 60px; */
+  position: relative;
+  width: 393px;
+  height: 852px;
+  background-color: #0094ff;
+`;
 const Ticket = styled.div`
   margin-top: 107px;
   background-color: #ffffff;
@@ -84,30 +93,10 @@ const MyJimventory = () => {
     setBookings(dummyReservations);
     console.log(dummyReservations, 'dummyReservations');
   }, []);
-  // useEffect(() => {
-  //   const getReservation = async () => {
-  //     const reservations = await getReservations();
-  //     setBookings(reservations);
-  //     console.log(reservations, 'reservations');
-  //   };
-  //   getReservation();
-  // }, []);
-  // 페이지 로드 시 사용자 데이터를 로드
-  // useEffect(() => {
-  //   // 이 부분에서 백엔드 API를 호출하여 사용자 데이터를 가져옵니다.
-  //   // 일단은 임시로 첫 번째 사용자를 사용자로 설정합니다.
-  //   setUser(userData[0]);
 
-  //   // 사용자 이메일에 해당하는 예약 정보를 필터링합니다.
-  //   const userBookings = bookingData.filter(
-  //     (booking) => booking.clientEmail === userData[0].email
-  //   );
-
-  //   setBookings(userBookings);
-  // }, []);
   const { check_in, check_out, storage, bag_count, price } = dummyReservations;
   return (
-    <div className={styles.container}>
+    <Container>
       <MyBookings>My Jimventory</MyBookings>
       <Ticket>
         <TitleSection>
@@ -133,12 +122,7 @@ const MyJimventory = () => {
           <PriceNum>8000 won</PriceNum>
         </CheckSection>
       </Ticket>
-      {/* <h1>help</h1>
-      <div>
-        Do you need assistance? Contact our customer support team via the live
-        chat available 24/7, or contact us at support@jimventory.com
-      </div> */}
-    </div>
+    </Container>
   );
 };
 

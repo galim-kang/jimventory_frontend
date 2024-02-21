@@ -141,9 +141,7 @@ const SectionBooking = () => {
       addHoursToDateTime(checkIn, hours);
     }
   }, [checkIn, hours]);
-  // useEffect(() => {
-  //   calculateTotal();
-  // }, [hours, count]);
+
   const nextSection = () => {
     if (section < 3) {
       setSection((prevSection) => prevSection + 1);
@@ -185,14 +183,13 @@ const SectionBooking = () => {
               width: '100%',
               height: 50,
               borderRadius: 50,
+              padding: '0 10px',
             }}
             type="datetime-local"
             name="checkIn"
             id="checkIn"
             value={checkIn}
             onChange={handleCheckInChange}
-            //  value={bookingInfo.checkIn}
-            // onChange={handleInputChange}
           />
           <CheckText>Operating-hours</CheckText>
           <CountSection width="100%" marginBottom="15px">
@@ -224,17 +221,6 @@ const SectionBooking = () => {
           <CheckText>Check-out</CheckText>
           <CountText>{checkOut}</CountText>
           <div>You can check out anytime before {minutes}</div>
-          {/* <input
-            style={{ width: '100%', borderRadius: 20 }}
-            type="datetime-local"
-            name="checkIn"
-            id="checkOut"
-            value={checkOut}
-            onChange={handleCheckOutChange}
-            onFocus={handleMinuteChange}
-            //  value={bookingInfo.checkIn}
-            // onChange={handleInputChange}
-          /> */}
         </DateSection>
       )}
       {section === 2 && (

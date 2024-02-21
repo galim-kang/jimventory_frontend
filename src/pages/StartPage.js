@@ -5,7 +5,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
 import './StartPage.css';
-import Section1BackgroundImage from '../image/section1-image.png';
 import OpenYourJimventory from '../components/OpenYourJimventory';
 import Frame from '../image/frame.png';
 import OriginalLogo from '../image/OriginalLogo.png';
@@ -18,8 +17,6 @@ const StartPageContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background-color: rgb(255,255,255); */
-  /* background: linear-gradient(#ffffff, #B9E2FF, #0094FF); */
   width: 393px;
   height: 852px;
   border-radius: 35px;
@@ -32,17 +29,12 @@ const SliderContainer = styled.div`
   width: 393px;
   height: 852px;
   color: rgb(223, 225, 226);
-  /* background-color: rgb(253, 106, 2); */
 `;
 
 const Section = styled.section`
   padding-top: 115px;
   width: 393px;
   height: 852px;
-  /* background-image: ${(props) => props.background || 'none'};
-background-position : center;
-background-repeat: no-repeat;
-background-size: cover; */
 `;
 const StartLink = styled(Link)`
   position: absolute;
@@ -135,8 +127,6 @@ function StartPage() {
           </Section>
           <Section>
             <MapImage src={MapPreview} />
-            {/* <Title>STEP.1</Title> */}
-            {/* <OpenYourJimventory /> */}
             <ContentContainer>
               <ContentSpan>Find </ContentSpan>
               <ContentSpan color="black">Jimventory </ContentSpan>
@@ -144,7 +134,6 @@ function StartPage() {
             </ContentContainer>
           </Section>
           <Section>
-            {/* <OpenYourJimventory /> */}
             <Phone src={PhoneLogo} />
             <ContentContainer>
               <ContentSpan>Book </ContentSpan>
@@ -154,14 +143,12 @@ function StartPage() {
           </Section>
           <Section>
             <CarrierImage src={Carrier} />
-            {/* <OpenYourJimventory /> */}
             <ContentContainer>
               <ContentDiv>Drop off your</ContentDiv>
               <ContentDiv>luggage securely</ContentDiv>
             </ContentContainer>
           </Section>
           <Section>
-            {/* <OpenYourJimventory /> */}
             <Complete src={CompleteLogo} />
             <ContentContainer>
               <ContentDiv>Enjoy your adventure</ContentDiv>
@@ -170,11 +157,6 @@ function StartPage() {
           </Section>
         </Slider>
       </SliderContainer>
-      {/* <h1>
-        open your
-        <br /> JIMVENTORY
-      </h1> */}
-
       <StartLink to="/main">START</StartLink>
     </StartPageContainer>
   );
