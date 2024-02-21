@@ -1,11 +1,13 @@
 .container {
-  margin: 0 auto;
-  max-width: 320px;
-  height: 100vh;
-  box-sizing: border-box;
-  display: flex;
+  /* margin: 0 auto; */
+  /* max-width: 320px;
+  height: 100vh; */
+  /* box-sizing: border-box; */
+  /* display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; */
+  position: relative;
+  height: 852px;
 }
 section {
   display: flex;
@@ -65,7 +67,7 @@ input[type="email"] {
   box-sizing: border-box;
 } */
 
-input[type="date"] {
+input[type='date'] {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -73,13 +75,13 @@ input[type="date"] {
   box-sizing: border-box;
 }
 
-.bagsContainer {
+/* .bagsContainer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
   margin-bottom: 10px;
-}
+} */
 
 .bagsControl {
   display: flex;
@@ -107,9 +109,9 @@ input[type="date"] {
     font-size: 18px;
   }
 
-  input[type="date"],
-  input[type="number"],
-  input[type="email"] {
+  input[type='date'],
+  input[type='number'],
+  input[type='email'] {
     padding: 15px;
     font-size: 18px;
   }

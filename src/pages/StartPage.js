@@ -8,6 +8,7 @@ import './StartPage.css';
 import Section1BackgroundImage from '../image/section1-image.png';
 import OpenYourJimventory from '../components/OpenYourJimventory';
 import Frame from '../image/frame.png';
+import OriginalLogo from '../image/OriginalLogo.png';
 const StartPageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -55,6 +56,13 @@ const StartLink = styled(Link)`
   background-color: rgb(255, 255, 255);
   border-radius: 50px;
 `;
+const Logo = styled.img`
+  position: absolute;
+  top: 155px;
+  width: 393px;
+  height: 615px;
+`;
+
 const Title = styled.span`
   font-family: 'Inter';
   font-size: 46px;
@@ -93,6 +101,7 @@ function StartPage() {
         <Slider {...settings}>
           <Section>
             <OpenYourJimventory />
+            <Logo src={OriginalLogo} />
             <ContentContainer>
               <ContentDiv>the easiest way to store</ContentDiv>
               <ContentDiv>your luggage</ContentDiv>
