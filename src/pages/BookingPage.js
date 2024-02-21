@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { createReservation, getStorageDetails } from '../api';
 import styles from './BookingPage.module.css';
 import styled from 'styled-components';
@@ -19,7 +19,7 @@ function BookingPage() {
   });
   // const [section, setSection] = useState(0);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchStorageDetails = async () => {
       const data = await getStorageDetails(id);
@@ -72,7 +72,9 @@ function BookingPage() {
       console.error('Reservation failed');
     }
   };
-
+  const goToMap = () => {
+    navigate('/main');
+  };
   // const nextSection = () => {
   //   if (section < 3) {
   //     setSection(section + 1);
@@ -88,7 +90,10 @@ function BookingPage() {
   return (
     <div className={styles.container}>
       {/* <h3 className={styles.sectionIndicator}>Section {section + 1}</h3> */}
-      {section === 0 && storageDetails && <SectionInfo id={id} />}
+
+      {section === 0 && storageDetails && (
+        <SectionInfo goToMap={goToMap} id={id} />
+      )}
       {section === 1 && (
         <SectionBooking />
         // <section>

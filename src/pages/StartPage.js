@@ -12,6 +12,7 @@ import OriginalLogo from '../image/OriginalLogo.png';
 import PhoneLogo from '../image/PhoneImage.png';
 import Carrier from '../image/Carrier.png';
 import CompleteLogo from '../image/CompleteLogo.png';
+import MapPreview from '../image/MapPreview.png';
 const StartPageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -105,6 +106,12 @@ const Complete = styled.img`
   margin-left: 40px;
   margin-top: 80px;
 `;
+const MapImage = styled.img`
+  width: 393px;
+  height: 852px;
+  position: absolute;
+  top: 0;
+`;
 function StartPage() {
   const settings = {
     dots: true,
@@ -127,6 +134,7 @@ function StartPage() {
             </ContentContainer>
           </Section>
           <Section>
+            <MapImage src={MapPreview} />
             {/* <Title>STEP.1</Title> */}
             {/* <OpenYourJimventory /> */}
             <ContentContainer>

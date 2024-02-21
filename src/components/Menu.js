@@ -18,6 +18,8 @@ const MenuBar = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* box-shadow: 5px 4px 7px (0, 0, 0, 0.6); */
+  border-top: 1px solid #d9d9d9;
 `;
 const IconContainer = styled.div`
   display: flex;

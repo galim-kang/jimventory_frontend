@@ -6,6 +6,7 @@ import { dummyStorages } from '../../dummyData/getAllStorages';
 import PolygonDown from '../../image/PolygonDown.png';
 import PolygonUp from '../../image/PolygonUp.png';
 import MenuSection from './MenuSection';
+import CancelLogo from '../../image/CancelX.png';
 // const Container = styled.div`
 //   position: relative;
 //   width: 393px;
@@ -137,7 +138,15 @@ const Polygon = styled.div`
   width: 23px;
   height: 23px;
 `;
-const SectionInfo = ({ id }) => {
+const XButton = styled.img`
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 900;
+`;
+const SectionInfo = ({ id, goToMap }) => {
   // const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [section, setSection] = useRecoilState(sectionState);
@@ -199,6 +208,11 @@ const SectionInfo = ({ id }) => {
           alignItems: 'center',
         }}
       >
+        {section === 0 && (
+          <div onClick={goToMap}>
+            <XButton src={CancelLogo} />
+          </div>
+        )}
         <StorageImage src={image} />
         <Address>{address}</Address>
         <div>

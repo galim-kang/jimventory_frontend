@@ -21,16 +21,16 @@ function App() {
         <div className="inner-container">
           <Routes>
             <Route path="/" element={<StartPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/join" element={<JoinPage />} />
-            <Route
+            {/* <Route path="/login" element={<LoginPage />} />
+            <Route path="/join" element={<JoinPage />} /> */}
+            {/* <Route
               path="/landing"
               element={
                 <Layout>
                   <LandingPage />
                 </Layout>
               }
-            />
+            /> */}
             <Route
               path="/main"
               element={
@@ -50,7 +50,7 @@ function App() {
             <Route
               path="/my-page"
               element={
-                <Layout>
+                <Layout menu="true">
                   <MyPage />
                 </Layout>
               }
