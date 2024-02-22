@@ -56,7 +56,7 @@ function Main() {
   const onSearchLocation = async () => {
     try {
       const response = await axios.get(
-        `https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/search/local.json?query=${searchValue}&display=10&start=1&sort=random`,
+        `https://openapi.naver.com/v1/search/local.json?query=${searchValue}&display=10&start=1&sort=random`,
         {
           headers: {
             'X-Naver-Client-Id': 'QW3w2VwojlAzqDun8Ugk', // 검색 api 클라이언트 아이디 , env로 변경할 것
