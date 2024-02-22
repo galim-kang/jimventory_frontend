@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SearchIcon from '../image/SearchLocIcon.png';
-// import SearchIcon from '../image/searchIcon.png';
+
 const SearchBarWrapper = styled.div`
   width: 100%;
   display: flex;

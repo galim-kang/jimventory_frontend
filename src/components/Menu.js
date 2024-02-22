@@ -10,7 +10,6 @@ const MenuBar = styled.div`
   bottom: 0;
   right: 0;
   left: 0;
-  // width: 100%;
   height: 80px;
   background-color: rgb(255, 255, 255);
   padding: 10px 0;
@@ -18,7 +17,6 @@ const MenuBar = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* box-shadow: 5px 4px 7px (0, 0, 0, 0.6); */
   border-top: 1px solid #d9d9d9;
 `;
 const IconContainer = styled.div`
@@ -51,7 +49,7 @@ const InfoIcon = styled.button`
   height: 28px;
 `;
 
-const Menu = ({ setMenuOpen }) => {
+const Menu = () => {
   const navigate = useNavigate();
   return (
     <MenuBar>

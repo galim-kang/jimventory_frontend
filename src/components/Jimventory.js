@@ -57,6 +57,8 @@ const Title = styled.div`
   font-size: 24px;
   color: #000000;
   margin-right: 6px;
+  text-align: center;
+  max-width: 150px;
 `;
 const StoreType = styled.div`
   font-family: 'Inter SemiBold';
@@ -81,14 +83,12 @@ const WalkTime = styled.div`
   font-family: 'Inter SemiBold';
 `;
 
-// const BookNow = styled(Link)` => Link 태그 확장
 const BookNow = styled.button`
   all: unset;
   font-family: 'Inter';
   display: inline-block;
   width: 339px;
   height: 53px;
-  /* padding: 8px 0; */
   border-radius: 50px;
   cursor: pointer;
   background-color: #0094ff;
@@ -111,7 +111,7 @@ const Jimventory = ({ selectedItem, setSelectedItem }) => {
   const containerRef = useRef();
   const navigate = useNavigate();
   useEffect(() => {
-    console.log(selectedItem, 'selectedItem');
+    // console.log(selectedItem, 'selectedItem');
     const handleClickOutside = (event) => {
       if (
         containerRef.current &&
@@ -119,7 +119,7 @@ const Jimventory = ({ selectedItem, setSelectedItem }) => {
       ) {
         setSelectedItem(null);
       }
-    }; // 짐벤토리 외부영역 클릭했을 시 이벤트 감지, selectedItem 없는걸로 간주하고 null로 비워버리기
+    };
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -127,7 +127,7 @@ const Jimventory = ({ selectedItem, setSelectedItem }) => {
     };
   }, [selectedItem, setSelectedItem]);
 
-  if (!selectedItem) return null; // selectedItem 없으면 짐벤토리 컴포넌트 띄우지 않기
+  if (!selectedItem) return null;
 
   const { walk, operatingTime, serviceName, storeType, description } =
     selectedItem;

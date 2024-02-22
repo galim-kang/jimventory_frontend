@@ -111,7 +111,7 @@ const DesTitle = styled.div`
 const DescriptionList = styled.li`
   font-family: 'Inter Regular';
   font-size: 15px;
-  padding: 3px 0;
+  padding: 5px 0;
   color: #7c7c7c;
 `;
 const Polygon = styled.div`
@@ -140,7 +140,7 @@ const SectionInfo = ({ id, goToMap }) => {
     // 스크롤 이벤트 핸들러 함수
     const handleScroll = () => {
       // 현재 스크롤 위치를 콘솔에 출력
-      console.log(scrollContainerRef.current?.scrollTop);
+      // console.log(scrollContainerRef.current?.scrollTop);
       const scrollTop = scrollContainerRef.current?.scrollTop;
       // if (isMenuOpen) {
       //   scrollContainerRef.current.scrollTop = 852;
@@ -162,7 +162,7 @@ const SectionInfo = ({ id, goToMap }) => {
   }, [isMenuOpen]);
   useEffect(() => {
     if (menuRef && isMenuOpen) {
-      console.log(menuRef.current);
+      // console.log(menuRef.current);
       menuRef.current?.scrollIntoView({ top: 50, behavior: 'smooth' });
     }
   }, [isMenuOpen]);
@@ -174,7 +174,7 @@ const SectionInfo = ({ id, goToMap }) => {
     // }
   };
   const dummyData = dummyStorages.filter((it) => it.id == id);
-  console.log(dummyData);
+  // console.log(dummyData);
   const nextSection = () => {
     if (section < 3) {
       setSection((prevSection) => prevSection + 1);

@@ -91,7 +91,7 @@ const MyJimventory = () => {
   const [bookings, setBookings] = useState([]);
   useEffect(() => {
     setBookings(dummyReservations);
-    console.log(dummyReservations, 'dummyReservations');
+    // console.log(dummyReservations, 'dummyReservations');
   }, []);
 
   const { check_in, check_out, storage, bag_count, price } = dummyReservations;

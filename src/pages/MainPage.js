@@ -78,7 +78,7 @@ function Main() {
       // const storages = await getAllStorages(); // ===============> api 주석처리
       // setStorageData(storages); // ============> api 주석에 따른 주석처리
       setStorageData(dummyStorages);
-      console.log(dummyStorages, 'dummyStorages');
+      // console.log(dummyStorages, 'dummyStorages');
     };
     fetchStorages();
   }, []);

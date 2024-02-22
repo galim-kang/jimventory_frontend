@@ -9,52 +9,48 @@ import StartPage from './pages/StartPage';
 import MyPage from './pages/MyPage';
 import Layout from './Layout';
 
-import { AuthProvider } from './context/AuthContext';
-
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <div className="inner-container">
-          <Routes>
-            <Route path="/" element={<StartPage />} />
+    <Router>
+      <div className="inner-container">
+        <Routes>
+          <Route path="/" element={<StartPage />} />
 
-            <Route
-              path="/main"
-              element={
-                <Layout menu="true">
-                  <MainPage />
-                </Layout>
-              }
-            />
-            <Route
-              path="/my-jimventory"
-              element={
-                <Layout menu="true">
-                  <MyJimventory />
-                </Layout>
-              }
-            />
-            <Route
-              path="/my-page"
-              element={
-                <Layout menu="true">
-                  <MyPage />
-                </Layout>
-              }
-            />
-            <Route
-              path="/booking/:id"
-              element={
-                <Layout>
-                  <BookingPage />
-                </Layout>
-              }
-            />
-          </Routes>
-        </div>
-      </Router>
-    </AuthProvider>
+          <Route
+            path="/main"
+            element={
+              <Layout menu="true">
+                <MainPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/my-jimventory"
+            element={
+              <Layout menu="true">
+                <MyJimventory />
+              </Layout>
+            }
+          />
+          <Route
+            path="/my-page"
+            element={
+              <Layout menu="true">
+                <MyPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/booking/:id"
+            element={
+              <Layout>
+                <BookingPage />
+              </Layout>
+            }
+          />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
